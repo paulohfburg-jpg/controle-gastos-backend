@@ -1,11 +1,14 @@
 # coding=utf-8
 import sqlite3
 from flask import Flask, jsonify, request, g, send_from_directory
+from flask_cors import CORS
+
 from datetime import datetime
 
 # Define o nome do banco de dados SQLite
 DATABASE = 'controle_gastos.db'
-app = Flask(__name__, static_folder='static') # Adicionei o argumento static_folder
+app = Flask(__name__, static_folder='static')
+CORS(app)
 
 # Função para conectar ao banco de dados
 def get_db():
@@ -315,4 +318,5 @@ if __name__ == '__main__':
     import os
     port = int(os.environ.get("PORT", 5000))  # Render define PORT, localmente usa 5000
     app.run(host="0.0.0.0", port=port, debug=True)
+
 
