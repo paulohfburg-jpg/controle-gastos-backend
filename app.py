@@ -74,7 +74,7 @@ init_db()
 
 
 # Endpoints da API para Origens
-@app.route('https://controle-gastos-backend-9rox.onrender.com/api/origens', methods=['GET', 'POST'])
+@app.route('/api/origens', methods=['GET', 'POST'])
 def handle_origens():
     db = get_db()
     if request.method == 'POST':
@@ -89,7 +89,7 @@ def handle_origens():
         origens = cursor.fetchall()
         return jsonify([dict(origem) for origem in origens])
 
-@app.route('https://controle-gastos-backend-9rox.onrender.com/api/origens/<int:id>', methods=['PUT', 'DELETE'])
+@app.route('/api/origens/<int:id>', methods=['PUT', 'DELETE'])
 def handle_origem_by_id(id):
     db = get_db()
     cursor = db.cursor()
@@ -108,7 +108,7 @@ def handle_origem_by_id(id):
         return jsonify({"message": "Origem excluída com sucesso!"})
 
 # Endpoints da API para Caixas
-@app.route('https://controle-gastos-backend-9rox.onrender.com/api/caixas', methods=['GET', 'POST'])
+@app.route('/api/caixas', methods=['GET', 'POST'])
 def handle_caixas():
     db = get_db()
     if request.method == 'POST':
@@ -123,7 +123,7 @@ def handle_caixas():
         caixas = cursor.fetchall()
         return jsonify([dict(caixa) for caixa in caixas])
 
-@app.route('https://controle-gastos-backend-9rox.onrender.com/api/caixas/<int:id>', methods=['PUT', 'DELETE'])
+@app.route('/api/caixas/<int:id>', methods=['PUT', 'DELETE'])
 def handle_caixa_by_id(id):
     db = get_db()
     cursor = db.cursor()
@@ -142,7 +142,7 @@ def handle_caixa_by_id(id):
         return jsonify({"message": "Caixa excluído com sucesso!"})
 
 # Endpoints da API para Saldos
-@app.route('https://controle-gastos-backend-9rox.onrender.com/api/saldos', methods=['GET', 'POST'])
+@app.route('/api/saldos', methods=['GET', 'POST'])
 def handle_saldos():
     db = get_db()
     if request.method == 'POST':
@@ -182,7 +182,7 @@ def handle_saldo_by_id(id):
         return jsonify({"message": "Saldo excluído com sucesso!"})
 
 # Endpoints da API para Dívidas
-@app.route('https://controle-gastos-backend-9rox.onrender.com/api/dividas', methods=['GET', 'POST'])
+@app.route('/api/dividas', methods=['GET', 'POST'])
 def handle_dividas():
     db = get_db()
     if request.method == 'POST':
@@ -203,7 +203,7 @@ def handle_dividas():
         dividas = cursor.fetchall()
         return jsonify([dict(divida) for divida in dividas])
 
-@app.route('https://controle-gastos-backend-9rox.onrender.com/api/dividas/<int:id>', methods=['PUT', 'DELETE'])
+@app.route('/api/dividas/<int:id>', methods=['PUT', 'DELETE'])
 def handle_divida_by_id(id):
     db = get_db()
     cursor = db.cursor()
@@ -222,7 +222,7 @@ def handle_divida_by_id(id):
         return jsonify({"message": "Dívida excluída com sucesso!"})
 
 # Endpoints para a Página Principal (filtragem e totais)
-@app.route('https://controle-gastos-backend-9rox.onrender.com/api/dashboard', methods=['GET'])
+@app.route('/api/dashboard', methods=['GET'])
 def get_dashboard_data():
     db = get_db()
     cursor = db.cursor()
